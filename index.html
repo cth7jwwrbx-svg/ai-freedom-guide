@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Marketing Guide | Daniele Polsinelli</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container { max-width: 600px; width: 100%; text-align: center; }
+        .logo {
+            font-size: 28px; font-weight: 800; margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .tagline { font-size: 14px; color: #888; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        h1 { font-size: 36px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; }
+        h1 span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .subtitle { font-size: 18px; color: #aaa; margin-bottom: 30px; line-height: 1.5; }
+        .features {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 25px; margin-bottom: 30px; text-align: left;
+        }
+        .features h2 { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: #667eea; margin-bottom: 15px; }
+        .features ul { list-style: none; }
+        .features li { padding: 8px 0; font-size: 16px; color: #ccc; display: flex; align-items: flex-start; gap: 10px; }
+        .features li::before { content: "✅"; flex-shrink: 0; }
+        .form-container {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 30px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px; background: rgba(255,255,255,0.05); color: #fff;
+            font-size: 16px; margin-bottom: 12px; outline: none;
+        }
+        input::placeholder { color: #666; }
+        button {
+            width: 100%; padding: 16px; border: none; border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; font-size: 18px; font-weight: 700; cursor: pointer;
+        }
+        .trust { margin-top: 20px; font-size: 12px; color: #666; }
+        .footer { margin-top: 30px; font-size: 12px; color: #555; }
+        .footer a { color: #667eea; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🚀 AI FREEDOM</div>
+        <div class="tagline">by Daniele Polsinelli</div>
+        <h1>Get Your Free <span>AI Marketing Guide</span></h1>
+        <p class="subtitle">Learn how to use AI to promote digital products and build passive income.</p>
+        <div class="features">
+            <h2>📚 What's Inside</h2>
+            <ul>
+                <li>The 3 AI tools that are changing everything for online marketers</li>
+                <li>How to create compelling marketing content in minutes</li>
+                <li>The step-by-step affiliate marketing blueprint that works in 2024</li>
+                <li>How to find profitable niches using AI</li>
+                <li>Real examples from AI Freedom students earning with AI</li>
+            </ul>
+        </div>
+        <div class="form-container">
+            <form id="leadForm">
+                <input type="text" name="name" placeholder="Your first name" required>
+                <input type="email" name="email" placeholder="Your best email" required>
+                <button type="submit">🎁 Send Me The Free Guide</button>
+            </form>
+            <div class="trust">🔒 We respect your privacy. Unsubscribe anytime.</div>
+        </div>
+        <div class="footer"><p>© 2024 Daniele Polsinelli</p></div>
+    </div>
+    <script>
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        if (!name || !email) { alert('Please fill in both fields.'); return; }
+
+        // Save to localStorage as backup
+        const leads = JSON.parse(localStorage.getItem('aiFreedomLeads') || '[]');
+        leads.push({ name, email, date: new Date().toISOString() });
+        localStorage.setItem('aiFreedomLeads', JSON.stringify(leads));
+
+        // Show success
+        this.innerHTML = '<div style="padding:30px"><div style="font-size:48px;margin-bottom:15px">🎉</div><h2 style="font-size:24px;margin-bottom:10px">You are In!</h2><p style="color:#aaa">Check your email for the guide. It should arrive in the next few minutes.</p><p style="color:#667eea;font-size:14px;margin-top:15px">While you are here, check out <a href="https://aifreedom.com" style="color:#667eea">AI Freedom</a> — the complete course.</p></div>';
+    });
+    </script>
+</body>
+</html>
