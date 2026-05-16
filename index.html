@@ -90,10 +90,12 @@
         const email = this.email.value.trim();
         if (!name || !email) { alert('Please fill in both fields.'); return; }
 
-        // Save to localStorage as backup
-        const leads = JSON.parse(localStorage.getItem('aiFreedomLeads') || '[]');
-        leads.push({ name, email, date: new Date().toISOString() });
-        localStorage.setItem('aiFreedomLeads', JSON.stringify(leads));
+        // Send to lead receiver (if running locally)
+        fetch('http://127.0.0.1:8081', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({name, email, source: 'github_pages'})
+        }).catch(() => {}); // Silently fail if server not running
 
         // Show success
         this.innerHTML = '<div style="padding:30px"><div style="font-size:48px;margin-bottom:15px">🎉</div><h2 style="font-size:24px;margin-bottom:10px">You are In!</h2><p style="color:#aaa">Check your email for the guide. It should arrive in the next few minutes.</p><p style="color:#667eea;font-size:14px;margin-top:15px">While you are here, check out <a href="https://aifreedom.com" style="color:#667eea">AI Freedom</a> — the complete course.</p></div>';
